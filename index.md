@@ -2,95 +2,52 @@
 layout: default
 title: Home
 nav_order: 1
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+description: "A backwards-compatible RM Basic interpreter for Windows and Linux"
 permalink: /
 ---
 
-# Focus on writing good documentation
+# RM BASICx64
 {: .fs-9 }
-
-Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages.
+A 64-bit backwards-compatible RM Basic interpreter for Windows and Linux.
 {: .fs-6 .fw-300 }
+_RM BASICx64 is a tribute project and is in no way linked to or endorsed by RM plc._
 
-[Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/pmarsceill/just-the-docs){: .btn .fs-5 .mb-4 .mb-md-0 }
-
----
-
-## Getting started
-
-### Dependencies
-
-Just the Docs is built for [Jekyll](https://jekyllrb.com), a static site generator. View the [quick start guide](https://jekyllrb.com/docs/) for more information. Just the Docs requires no special plugins and can run on GitHub Pages' standard Jekyll compiler. The [Jekyll SEO Tag plugin](https://github.com/jekyll/jekyll-seo-tag) is included by default (no need to run any special installation) to inject SEO and open graph metadata on docs pages. For information on how to configure SEO and open graph metadata visit the [Jekyll SEO Tag usage guide](https://jekyll.github.io/jekyll-seo-tag/usage/).
-
-### Quick start: Use as a GitHub Pages remote theme
-
-1. Add Just the Docs to your Jekyll site's `_config.yml` as a [remote theme](https://blog.github.com/2017-11-29-use-any-theme-with-github-pages/)
-```yaml
-remote_theme: pmarsceill/just-the-docs
-```
-<small>You must have GitHub Pages enabled on your repo, one or more Markdown files, and a `_config.yml` file. [See an example repository](https://github.com/pmarsceill/jtd-remote)</small>
-
-### Local installation: Use the gem-based theme
-
-1. Install the Ruby Gem
-```bash
-$ gem install just-the-docs
-```
-```yaml
-# .. or add it to your your Jekyll site’s Gemfile
-gem "just-the-docs"
-```
-2. Add Just the Docs to your Jekyll site’s `_config.yml`
-```yaml
-theme: "just-the-docs"
-```
-3. _Optional:_ Initialize search data (creates `search-data.json`)
-```bash
-$ bundle exec just-the-docs rake search:init
-```
-3. Run you local Jekyll server
-```bash
-$ jekyll serve
-```
-```bash
-# .. or if you're using a Gemfile (bundler)
-$ bundle exec jekyll serve
-```
-4. Point your web browser to [http://localhost:4000](http://localhost:4000)
-
-If you're hosting your site on GitHub Pages, [set up GitHub Pages and Jekyll locally](https://help.github.com/en/articles/setting-up-your-github-pages-site-locally-with-jekyll) so that you can more easily work in your development environment.
-
-### Configure Just the Docs
-
-- [See configuration options]({{ site.baseurl }}{% link docs/configuration.md %})
+[Get it now](#get-it-now){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View on GitHub](https://github.com/adamstimb/rmbasicx64){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
-## About the project
+## It's a what now?
 
-Just the Docs is &copy; 2017-{{ "now" | date: "%Y" }} by [Patrick Marsceill](http://patrickmarsceill.com).
+RM BASICx64 is a re-implementation the RM Basic language developed by Research Machines in 1984 for the RM Nimbus PC-186.  RM BASICx64 looks and behaves like the original, but under the  hood it takes full advantage of modern computer architectures by supporting 64 bit floating point numbers, extremely deep expression evaluation, and vast amounts of workspace memory.
 
-### License
+## Project status
 
-Just the Docs is distributed by an [MIT license](https://github.com/pmarsceill/just-the-docs/tree/master/LICENSE.txt).
+The current release is very far from a complete implementation of RM Basic.  Before rushing to install please see the [release notes](docs/releases.html) to manage your expectations.
 
-### Contributing
+## Get it now
 
-When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. Read more about becoming a contributor in [our GitHub repo](https://github.com/pmarsceill/just-the-docs#contributing).
+Coming soon: Download the installer (Windows only)
 
-#### Thank you to the contributors of Just the Docs!
+or [build from source (Windows or Linux)](https://github.com/adamstimb/rmbasicx64)
 
-<ul class="list-style-none">
-{% for contributor in site.github.contributors %}
-  <li class="d-inline-block mr-1">
-     <a href="{{ contributor.html_url }}"><img src="{{ contributor.avatar_url }}" width="32" height="32" alt="{{ contributor.login }}"/></a>
-  </li>
-{% endfor %}
-</ul>
+## Screenshots
 
-### Code of Conduct
+![RM BASICx64 running on Ubuntu](assets/images/interpreter-loaded.png)
+RM BASICx64 running on Ubuntu
 
-Just the Docs is committed to fostering a welcoming community.
+![Bike by The Pink Floyd using string evaluation](assets/images/bike-lyrics.png)
+Bike by The Pink Floyd using string evaluation
 
-[View our Code of Conduct](https://github.com/pmarsceill/just-the-docs/tree/master/CODE_OF_CONDUCT.md) on our GitHub repository.
+## Authorship
+
+RM BASICx64 was written in [Go](https://golang.org/) by Tim Adams and leans heavily on the [ebiten](https://ebiten.org/) game engine.
+
+This website was written by Tim Adams using [Just the Docs](https://pmarsceill.github.io/just-the-docs/).
+
+Contact me on [github](https://github.com/adamstimb), [linkedin](linkedin.com/in/adamstimb) or [twitter](https://twitter.com/TimAdam80276952).
+
+## License
+
+RM BASICx64 is distributed by an [MIT license](https://github.com/adamstimb/rmbasicx64/tree/master/LICENSE).
+
+
