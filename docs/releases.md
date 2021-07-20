@@ -18,7 +18,7 @@ IF...THEN...ELSE implemented.
 
 Logical operators are not all bitwise, consistent with RM Basic.
 
-See the [Reference](reference.html) for an up-to-date list of implemented commands.
+See the [Reference](https://adamstimb.github.io/rmbasicx64site/docs/reference.html) for an up-to-date list of implemented commands.
 
 ## 0.01A
 
@@ -33,4 +33,4 @@ Development work has been in three slightly overlapping phases: 1. Building an e
 So in this release, you can try some simple commands and evaluate some not-so-simple expressions
 and even experience some unspecific syntax errors!
 
-See the [Reference](reference.html) for an up-to-date list of implemented commands.
+See the [Reference](https://adamstimb.github.io/rmbasicx64site/docs/reference.html) for an up-to-date list of implemented commands.
