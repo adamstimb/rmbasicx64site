@@ -18,6 +18,8 @@ IF...THEN...ELSE implemented.
 
 Logical operators are not all bitwise, consistent with RM Basic.
 
+See the [Reference](/docs/reference.html) for an up-to-date list of implemented commands.
+
 ## 0.01A
 
 19th July 2021
