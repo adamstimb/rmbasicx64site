@@ -30,6 +30,8 @@ Coming soon: Download the installer (Windows only)
 
 or [build from source (Windows or Linux)](https://github.com/adamstimb/rmbasicx64)
 
+Then try the [Quick start guide](docs/quickstart.html)
+
 ## Screenshots
 
 ![RM BASICx64 running on Ubuntu](assets/images/interpreter-loaded.png)
