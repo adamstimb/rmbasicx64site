@@ -48,6 +48,6 @@ Contact me on [github](https://github.com/adamstimb), [linkedin](linkedin.com/in
 
 ## License
 
-RM BASICx64 is distributed by an [MIT license](https://github.com/adamstimb/rmbasicx64/tree/master/LICENSE).
+RM BASICx64 is distributed by an [Apache 2.0 license](https://github.com/adamstimb/rmbasicx64/tree/master/LICENSE).
 
 
