@@ -34,4 +34,4 @@ Interestingly, for a while I wanted to get my hands on a Nimbus, or a good emula
 
 ---
 
-<small>* Nick, if you're out there please [drop me a line!](../index.html#authorship)</small>
+<small>* Nick, if you're out there please [drop me a line!](https://adamstimb.github.io/rmbasicx64site/index.html#authorship)</small>
