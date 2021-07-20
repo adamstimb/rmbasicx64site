@@ -8,6 +8,16 @@ nav_order: 4
 
 ---
 
+## 0.01B
+
+21st July 2021
+
+LOAD, SAVE, RUN commands implemented with minimal functionality.  EDIT and AUTO commands not yet implemented but program lines can be added or edited by typing the line number followed by the instruction(s), e.g. `10 SET MODE 40 : PRINT "Hi there!"`
+
+IF...THEN...ELSE implemented.
+
+Logical operators are not all bitwise, consistent with RM Basic.
+
 ## 0.01A
 
 19th July 2021

@@ -40,7 +40,7 @@ Bike by The Pink Floyd using string evaluation
 
 ## Authorship
 
-RM BASICx64 was written in [Go](https://golang.org/) by Tim Adams and leans heavily on the [ebiten](https://ebiten.org/) game engine.
+RM BASICx64 was written in [Go](https://golang.org/) by Tim Adams, leaning heavily on the [ebiten](https://ebiten.org/) game engine, and borrowing with merry abandon from [Writing An Interpreter in Go](https://interpreterbook.com/) by Thorsten Ball.
 
 This website was written by Tim Adams using [Just the Docs](https://pmarsceill.github.io/just-the-docs/).
 

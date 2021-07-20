@@ -46,6 +46,14 @@ PRINT ABS(-1.2345)
 
 ```
 
+## AND
+
+Bitwise AND on two expressions.
+
+### Syntax
+
+_e1_ AND _e2_
+
 ## ATN
 
 Calculate the angle with the given tangent.  The unit of the measurement for the angle can be set with [SET DEG](#set-deg) or [SET RAD](#set-rad).
@@ -109,6 +117,21 @@ PRINT EXP(1)
 
 ```
 
+## IF...THEN...ELSE
+
+Conditionally execution instruction(s) on a single line.
+
+### Syntax
+
+IF _t_ THEN Instruction(s) [ELSE Instruction(S)]
+
+### Example
+
+```
+IF Month = 9 THEN PRINT "September"
+IF Month = 12 AND Day = 31 THEN SET PEN 2 : PRINT "Happy New Year!" ELSE SET PEN 1 : PRINT "Have a nice day!"
+```
+
 ## INT(_e_)
 
 Calculate the largest whole number that is less than or equal to a given value.
@@ -152,6 +175,14 @@ _or_
 ```
 ```
 
+## LIST
+
+List the stored program.  Listing over ranges yet to be implemented.
+
+### Syntax
+
+LIST
+
 ## LN
 
 Calculate the natural logarithm of a number.
@@ -169,6 +200,16 @@ PRINT LN(1.32)
 
 ```
 
+## LOAD
+
+Load a program from a file into memory.
+
+### Syntax
+
+LOAD _e$_
+
+Where _e$_ must be a valid filename.  If _e$_ does not end in ".BAS" then ".BAS" will be added automatically.
+
 ## LOG
 
 Calculate the logarithm to the base 10 of a number.
@@ -185,6 +226,30 @@ PRINT LOG(5.2)
    0.7160033436347991
 
 ```
+
+## NEW
+
+Clear workspace.  Delete all variables and wipe the stored program.
+
+### Syntax
+
+NEW
+
+## NOT
+
+Bitwise NOT on an expression.
+
+### Syntax
+
+NOT _e_
+
+## OR
+
+Bitwise OR on two expressions.
+
+### Syntax
+
+_e1_ OR _e2_
 
 ## PRINT
 
@@ -225,6 +290,24 @@ RND(_e_)
 ```
 
 ```
+
+## RUN
+
+Execute the stored program.  Running from a different line number is not yet implemented.
+
+### Syntax
+
+RUN
+
+## SAVE
+
+Save a stored program to a file.
+
+### Syntax
+
+SAVE _e$_
+
+Where _e$_ must be a valid filename.  If the file already exists it will be overwritten without warning.  A warning and continue prompt is yet to be implemented.  If _e$_ does not end in ".BAS" then ".BAS" will be added automatically.
 
 ## SET BORDER
 
@@ -359,3 +442,11 @@ TAN(_e_)
 
 ```
 ```
+
+## XOR
+
+Bitwise XOR on two expressions.
+
+### Syntax
+
+_e1_ XOR _e2_
