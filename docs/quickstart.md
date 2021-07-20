@@ -28,10 +28,10 @@ Use the `LIST` command to review your program.
 
 ```
 :LIST
-:10 SET MODE 40 : REM High-colour mode
-:20 SET BORDER 5 : SET PAPER 9 : CLS : REM Dark cyan border and light blue paper
-:30 SET PEN 0 : REM Black pen
-:40 PRINT "Hello!  This is my first RM Basic program in a while."
+10 SET MODE 40 : REM High-colour mode
+20 SET BORDER 5 : SET PAPER 9 : CLS : REM Dark cyan border and light blue paper
+30 SET PEN 0 : REM Black pen
+40 PRINT "Hello!  This is my first RM Basic program in a while."
 :_
 ```
 
