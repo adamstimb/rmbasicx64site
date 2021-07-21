@@ -26,7 +26,7 @@ The current release is very far from a complete implementation of RM Basic.  Bef
 
 ## Get it now
 
-Coming soon: Download the installer (Windows only)
+[Download the installer - 6.2Mb (Windows only)](assets/downloads/rmbasicx64setup.exe)
 
 or [build from source (Windows or Linux)](https://github.com/adamstimb/rmbasicx64)
 

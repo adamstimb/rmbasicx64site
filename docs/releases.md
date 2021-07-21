@@ -16,7 +16,7 @@ LOAD, SAVE, RUN commands implemented with minimal functionality.  EDIT and AUTO 
 
 IF...THEN...ELSE implemented.
 
-Logical operators are not all bitwise, consistent with RM Basic.
+Logical operators are all bitwise, consistent with RM Basic.
 
 See the [Reference](https://adamstimb.github.io/rmbasicx64site/docs/reference.html) for an up-to-date list of implemented commands.
 
