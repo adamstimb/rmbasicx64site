@@ -20,6 +20,7 @@ nav_order: 4
 - Plumbing for 3-channel sound synthesizer is done but not yet accessable (watch this space)
 - Error messages highlight the position in the code where an error was detected
 - DIR implemented but it can only list BASIC programs in the workspace folder
+- All equality operators implemented
 - GOTO implemented (woop-woop!)
 - REPEAT ... UNTIL loop implemented
 - FOR ... NEXT loop implemented

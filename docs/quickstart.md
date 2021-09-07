@@ -55,3 +55,5 @@ To start again from scratch just wipe the workspace with the `NEW` command.  `LI
 :LIST
 :_
 ```
+
+Or try loading some of the example programs.  Use the `DIR` command to list all the programs in your workspace including the examples.  
