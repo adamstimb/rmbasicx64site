@@ -103,15 +103,14 @@ The mouse must first be initialised with the `SET MOUSE` command.  _v1_ and _v2_
 ### Example
 
 ```
-10 REM A simple drawing program
+10 REM A very, very simple drawing program
 20 SET MODE 40
-30 PRINT "Left-click to draw" ! "Right-click to quit"
+30 PRINT "Click any mouse button to quit"
 40 SET MOUSE
 50 REPEAT
 60   ASK MOUSE Xpos%, Ypos%, Button%
-70   REM Flicker the mouse cursor unless left button pressed
-80   IF Button% = 1 THEN CIRCLE 5, Xpos%, Ypos% BRUSH 13 ELSE CIRCLE 5, Xpos%, Ypos% BRUSH 13 OVER FALSE
-90 UNTIL Button% = 2
+70   CIRCLE 5, Xpos%, Ypos% BRUSH 13
+80 UNTIL Button% > 0
 ```
 
 ## ATN
@@ -198,7 +197,7 @@ DIR
 
 ### Remarks
 
-DIR does not yet support listing different folders or files without the .BAS extension.  The workspace folder is currently fixed to a subdirectory in your installation folder.  In a future release it should become possible to change this to something more suitable, e.g. a folder in My Documents.
+DIR does not yet support listing different folders or files without the .BAS extension.  The workspace folder is currently a subdirectory in your installation folder and cannot be changed.  In a future release it should become possible to change this to something more suitable, e.g. a folder in My Documents.
 
 ## EDIT
 
