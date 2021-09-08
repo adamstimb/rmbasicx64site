@@ -43,7 +43,7 @@ Editing a program
 ![Greetings](assets/images/greetings.png)
 Using big fonts to say hello
 
-![Mandelbrot Set](assets/images/editing-a-program.png)
+![Mandelbrot Set](assets/images/mandelbrot-set.png)
 The Mandelbrot Set
 
 ## Authorship
