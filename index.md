@@ -34,11 +34,17 @@ Then try the [Quick start guide](docs/quickstart.html)
 
 ## Screenshots
 
-![RM BASICx64 running on Ubuntu](assets/images/interpreter-loaded.png)
-RM BASICx64 running on Ubuntu
+![RM BASICx64 running on Windows 10](assets/images/interpreter-loaded.png)
+RM BASICx64 running on Windows 10
 
-![Bike by The Pink Floyd using string evaluation](assets/images/bike-lyrics.png)
-Bike by The Pink Floyd using string evaluation
+![Editing a program](assets/images/editing-a-program.png)
+Editing a program
+
+![Greetings](assets/images/greetings.png)
+Using big fonts to say hello
+
+![Mandelbrot Set](assets/images/editing-a-program.png)
+The Mandelbrot Set
 
 ## Authorship
 
