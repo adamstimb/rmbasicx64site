@@ -22,7 +22,7 @@ RM BASICx64 is a re-implementation the RM Basic language developed by Research M
 
 ## Project status
 
-The current release is very far from a complete implementation of RM Basic.  Before rushing to install please see the [release notes](docs/releases.html) to manage your expectations.
+Roughly half of the original language specification is implemented.  The code has not been hardened so may crash unexpectedly or produce strange errors.  Before rushing to install please see the [release notes](docs/releases.html) to manage your expectations.
 
 ## Get it now
 
@@ -34,15 +34,21 @@ Then try the [Quick start guide](docs/quickstart.html)
 
 ## Screenshots
 
-![RM BASICx64 running on Ubuntu](assets/images/interpreter-loaded.png)
-RM BASICx64 running on Ubuntu
+![RM BASICx64 running on Windows 10](assets/images/interpreter-loaded.png)
+RM BASICx64 running on Windows 10
 
-![Bike by The Pink Floyd using string evaluation](assets/images/bike-lyrics.png)
-Bike by The Pink Floyd using string evaluation
+![Editing a program](assets/images/editing-a-program.png)
+Editing a program
+
+![Greetings](assets/images/greetings.png)
+Using big fonts to say hello
+
+![Mandelbrot Set](assets/images/editing-a-program.png)
+The Mandelbrot Set
 
 ## Authorship
 
-RM BASICx64 was written in [Go](https://golang.org/) by Tim Adams, leaning heavily on the [ebiten](https://ebiten.org/) game engine, and borrowing with merry abandon from [Writing An Interpreter in Go](https://interpreterbook.com/) by Thorsten Ball.
+RM BASICx64 was written in [Go](https://golang.org/) by Tim Adams, leaning heavily on the [ebiten](https://ebiten.org/) game engine, and borrowing with merry abandon from [Writing An Interpreter in Go](https://interpreterbook.com/) by Thorsten Ball.  The language has been re-implemented according to available documentation but does not re-use any of the original code of RM Basic.
 
 This website was written by Tim Adams using [Just the Docs](https://pmarsceill.github.io/just-the-docs/).
 

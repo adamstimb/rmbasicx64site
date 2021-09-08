@@ -8,6 +8,44 @@ nav_order: 4
 
 ---
 
+## 0.10A
+
+12th September 2021
+
+### New stuff
+
+- Loads and saves BASIC programs to a workspace folder in the installation directory
+- Some example programs are included in the workspace folder 
+- Application now loads with RM Nimbus "Welcome" boot sequence; disable this feature with the command `SET CONFIG BOOT FALSE`
+- Plumbing for 3-channel sound synthesizer is done but not yet accessable (watch this space)
+- Error messages highlight the position in the code where an error was detected
+- DIR implemented but it can only list BASIC programs in the workspace folder
+- All equality operators implemented
+- GOTO implemented (woop-woop!)
+- REPEAT ... UNTIL loop implemented
+- FOR ... NEXT loop implemented
+- EDIT implemented
+- RENUMBER implemented
+- LOAD/SAVE improved error handling
+- PRINT extra features added
+- HOME implemented
+- MOVE implemented
+- GET implemented
+- SET CURPOS implemented
+- PLOT implemented
+- AREA implemented
+- LINE implemented
+- CIRCLE implemented
+- SET COLOUR implemented
+- SET/ASK MOUSE implemented
+
+### Bugfixes
+
+- Graphics near top or bottom of the screen no longer get sliced in half
+- Fixed major slowdown after many graphics operations
+- CPU usage is a little more restrained but still runs quite hot
+- "Unknown/command procedure" error is now produced if a statement contains only a solitary variable name
+
 ## 0.01B
 
 21st July 2021
