@@ -43,6 +43,8 @@ nav_order: 4
 
 - Fixed borked drawing near top of screen
 
+See the [Reference](https://adamstimb.github.io/rmbasicx64site/docs/reference.html) for an up-to-date list of implemented commands.
+
 ## 0.10A
 
 12th September 2021
@@ -80,6 +82,8 @@ nav_order: 4
 - Fixed major slowdown after many graphics operations
 - CPU usage is a little more restrained but still runs quite hot
 - "Unknown/command procedure" error is now produced if a statement contains only a solitary variable name
+
+See the [Reference](https://adamstimb.github.io/rmbasicx64site/docs/reference.html) for an up-to-date list of implemented commands.
 
 ## 0.01B
 
