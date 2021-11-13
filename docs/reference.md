@@ -527,6 +527,33 @@ After the coordinate list you can specify options that override the current grap
 | SIZE | selects the size of characters | SIZE _e1_[, _e2_] |
 | FONT | selects the font of characters | FONT _e_ |
 
+## POINTS
+
+Draw one or more points on the screen.
+
+## Syntax
+
+POINTS _coordinateList_ [_optionList_]
+
+### Remarks
+
+The coordinate list can be a single set of coordinates or a list of several, seperated by a semicolon, e.g. 10, 200 or 10, 200; 20, 200; 30, 200
+
+After the coordinate list you can specify options that override the current graphics settings:
+
+| Option | Action | Syntax |
+| ------ | ------ | ------ |
+| BRUSH | selects the brush colour | BRUSH _e_ |
+| STYLE | not yet implemented | n/a |
+| OVER | selects the drawing style | OVER _t_ |
+
+### Example
+
+```
+CIRCLE 20, 0, 200
+CIRCLE 15, 50, 100 BRUSH 2
+CIRCLE 30, 0, 150; 50, 150; 100, 150 BRUSH 1 OVER FALSE
+
 ## PRINT
 
 Prints strings and/or numbers on the screen.
