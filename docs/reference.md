@@ -583,21 +583,38 @@ ENDPROC
 
 When is a function not a function?  When it's a procedure.  When is a procedure not a procedure? When it's a procedure that can receive arguments and return a value; in fact it can return several values, making it a kind of monster function!  Confusing?  Yep.  Ahead of it's time and brilliant?  Absolutely.
 
-
-
 As with functions, the definition can be placed anywhere in your program, so even if you call a procedure before it's defined, the procedure will still be callable.  The PROCEDURE command itself cannot be executed.  To avoid this is to put all your procedure statements at the end of the program, and insert an END statement above as shown in the example below.  The result is returned to the caller whenever LEAVE or ENDPROC is called from within the procedure.  The ENDPROC statement marks the end of the function.  Like ENDFUNC, although not strictly enforced in RM Basic, execution can be unpredictable if the ENDPROC statement is left out.
 
-### Example
+### Examples
 
 ```
-10 REM Simple function to generate a greeting
-20 Name$ := "Slim Shady"
-30 PRINT Generate_Greeting$(Name$)
-40 END : REM Don't execute function definitions below
-50 FUNCTION Generate_Greeting(N$)
-60   RESULT "Hi! My name is " + N$
-70 ENDFUN
+10 Boom
+20 END
+30 PROCEDURE Boom
+40   SET MODE 40 : SET BORDER 14 : SET PAPER 2 : CLS
+50   Shadow_Text "BOOOMM!!!", 10, 10, 4, 15
+60 ENDPROC
+70 PROCEDURE Shadow_Text Msg$, X%, Y%, S%, C%
+80   PLOT Msg$, X%, Y% SIZE S% BRUSH 0
+90   PLOT Msg$, X% + 1, Y% + 1 SIZE S% BRUSH C%
+100 ENDPROC
 ```
+
+```
+10 Cat_Name$ := "Fluffy"
+20 Dog_Name$ := "Czeszek"
+30 Cat_Food$ := "Salmon"
+40 Dog_Food$ := "Steak"
+50 Describe_Pets Cat_Name$, Dog_Name$, Cat_Food$, Dog_Food$ RECEIVE Names$, Foods$
+60 PRINT Names$
+70 PRINT Foods$
+80 END
+90 PROCEDURE Describe_Pets Pet_1_Name$, Pet_2_Name$, Pet_1_Food$, Pet_2_Food$ RETURN Their_Names$, Their_Foods$
+100   Their_Names$ = "The names of our pets are " + Pet_1_Name$ + " and " + Pet_2_Name$
+110   Their_Food$ = Pet_1_Name$ + "'s favourite food is " + Pet_1_Food$ + " but " + Pet_2_Name$ + " likes " + Pet_2_Food$
+120 ENDPROC
+```
+
 
 
 ## REM
