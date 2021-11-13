@@ -77,7 +77,7 @@ After the coordinate list you can specify options that override the current grap
 | Option | Action | Syntax |
 | ------ | ------ | ------ |
 | BRUSH | selects the brush colour | BRUSH _e_ |
-| STYLE | not yet implemented | n/a |
+| STYLE | the fill style | STYLE _e1_[, _e2_[, _e3_]] |
 | OVER | selects the drawing style | OVER _t_ |
 
 ### Example
@@ -152,7 +152,7 @@ After the coordinate list you can specify options that override the current grap
 | Option | Action | Syntax |
 | ------ | ------ | ------ |
 | BRUSH | selects the brush colour | BRUSH _e_ |
-| STYLE | not yet implemented | n/a |
+| STYLE | the fill style | STYLE _e1_[, _e2_[, _e3_]] |
 | OVER | selects the drawing style | OVER _t_ |
 
 ### Example
@@ -186,6 +186,20 @@ PRINT COS(90)
    -25.67272711536642
 
 ```
+
+## DATA
+
+Specify numeric and/or string constants that will be assigned to variables with the READ statement.
+
+### Syntax
+
+DATA _c1_[, _c2_...]
+
+### Remarks
+
+DATA statements can be placed anywhere in your program and unlike function or procedure statements they can be executed although no side-effects will be noticed.  A program can have many DATA statements and the data in them will be read in the order in which they appear.  All DATA statements are read into memory _before_ the program itself executes, and the values are read into variables using READ statements.
+
+See the RM Basic manual for the details!
 
 ## DIR
 
@@ -231,6 +245,27 @@ PRINT EXP(1)
    2.718281828459045
 
 ```
+
+## FLOOD
+
+Fill an area of the graphics screen.
+
+## Syntax
+
+FLOOD _coordinateList_ [_optionList_]
+
+### Remarks
+
+Starting from the point of points given in the coordinate list, the screen is filled with the brush colour until a boundary or drawing area edge is reached.
+
+After the coordinate list you can specify options that override the current graphics settings:
+
+| Option | Action | Syntax |
+| ------ | ------ | ------ |
+| BRUSH | selects the brush colour | BRUSH _e_ |
+| STYLE | the fill style | STYLE _e1_[, _e2_[, _e3_]] |
+| OVER | selects the drawing style | OVER _t_ |
+| EDGE | selects the boundary colour | OVER _t_ |
 
 ## FOR ... NEXT
 
@@ -544,15 +579,8 @@ After the coordinate list you can specify options that override the current grap
 | Option | Action | Syntax |
 | ------ | ------ | ------ |
 | BRUSH | selects the brush colour | BRUSH _e_ |
-| STYLE | not yet implemented | n/a |
+| STYLE | the points style | STYLE _e_ |
 | OVER | selects the drawing style | OVER _t_ |
-
-### Example
-
-```
-CIRCLE 20, 0, 200
-CIRCLE 15, 50, 100 BRUSH 2
-CIRCLE 30, 0, 150; 50, 150; 100, 150 BRUSH 1 OVER FALSE
 
 ## PRINT
 
@@ -642,7 +670,17 @@ As with functions, the definition can be placed anywhere in your program, so eve
 120 ENDPROC
 ```
 
+## READ
 
+Read values from DATA and assign them to variables.
+
+### Syntax
+
+READ _v1_[, _v2_...]
+
+### Remarks
+
+See the RM Basic manual for details.
 
 ## REM
 
@@ -702,6 +740,18 @@ UNTIL _t_
 70 UNTIL D1% = 6 AND D2% = 6
 80 PRINT "We got 2 sixes after ", Throws%, " throws!"
 ```
+
+## RESTORE
+
+Prepare to reread DATA instructions.
+
+### Syntax
+
+RESTORE [_lineNumber_]
+
+### Remarks
+
+See the RM Basic manual for details.
 
 ## RND
 
@@ -862,6 +912,18 @@ SET PAPER _e_
 ```
 SET PAPER 1
 ```
+
+## SET PATTERN
+
+Define a pattern that can be used as a BRUSH colour when drawing.
+
+### Syntax
+
+SET PATTERN _e1_, _e2_ TO _e3_, _e4_, _e5_, _e6_
+
+### Remarks
+
+See the RM Basic manual for how this works and the default pattern settings!
 
 ## SET PEN
 
