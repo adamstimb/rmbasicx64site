@@ -313,7 +313,7 @@ ENDFUN
 
 ### Remarks
 
-Functions can be defined in RM Basic much like in any modern language.  The definition can be placed anywhere in your program, so even if you call a function before it's defined, the function will still be callable.  The only gotcha is that the FUNCTION command itself cannot be executed.  A good way to avoid this is to put all your function statements at the end of the program, and insert an END statement above as shown in the example below.  The result is returned to the caller whenever RESULT is called from within the function.  The ENDFUN statement marks the end of the function.  Although not strictly enforced in RM Basic, execution can be unpredictable if the ENDFUN statement is left out.
+Functions can be defined in RM Basic much like in any modern language.  The definition can be placed anywhere in your program, so even if you call a function before it's defined, the function will still be callable.  The only gotcha is that the FUNCTION command itself cannot be executed.  A good way to avoid this is to put all your function statements at the end of the program, and insert an END statement above as shown in the example below.  The result is returned to the caller whenever RESULT is called from within the function.  Note that RM Basic functions can only return one value.  To return more than one value, bizarrely enough you don't need a function at all: You need a procedure!  The ENDFUN statement marks the end of the function.  Although not strictly enforced in RM Basic, execution can be unpredictable if the ENDFUN statement is left out.
 
 ### Example
 
@@ -987,6 +987,14 @@ PRINT SQR(23)
    4.795831523312719
 
 ```
+
+## SUBROUTINE
+
+Label a section of code as a subroutine.
+
+### Syntax
+
+
 
 ## TAN
 
