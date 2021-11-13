@@ -22,7 +22,7 @@ RM BASICx64 is a re-implementation the RM Basic language developed by Research M
 
 ## Project status
 
-Roughly half of the original language specification is implemented.  The code has not been hardened so may crash unexpectedly or produce strange errors.  Before rushing to install please see the [release notes](docs/releases.html) to manage your expectations.
+Over half of the original language specification has been implemented so far.  The code has not been hardened so may crash unexpectedly or produce strange errors.  Before rushing to install please see the [release notes](docs/releases.html) to manage your expectations.
 
 ## Get it now
 
