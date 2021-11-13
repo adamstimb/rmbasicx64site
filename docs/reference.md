@@ -207,6 +207,14 @@ Edit a line number in a program
 
 EDIT _lineNumber_
 
+## END
+
+End program execution
+
+### Syntax
+
+END
+
 ## EXP
 
 Calculate the exponential function, e^x
@@ -254,6 +262,34 @@ RUN
   1
   0
   Blast off!
+```
+
+## FUNCTION / RESULT / ENDFUN
+
+Define a function.
+
+### Syntax
+
+FUNCTION _v1_([_v2_ [ ,_v3_...]])
+
+RESULT _e1_ [, _e2_ ...]
+
+ENDFUN
+
+### Remarks
+
+Functions can be defined in RM Basic much like in any modern language.  The definition can be placed anywhere in your program, so even if you call a function before it's defined, the function will still be callable.  The only gotcha is that the FUNCTION command itself cannot be executed.  A good way to avoid this is to put all your function statements at the end of the program, and insert an END statement above as shown in the example below.  The result is returned to the caller whenever RESULT is called from within the function.  The ENDFUN statement marks the end of the function.  Although not strictly enforced in RM Basic, execution can be unpredictable if the ENDFUN statement is left out.
+
+### Example
+
+```
+10 REM Simple function to generate a greeting
+20 Name$ := "Slim Shady"
+30 PRINT Generate_Greeting$(Name$)
+40 END : REM Don't execute function definitions below
+50 FUNCTION Generate_Greeting(N$)
+60   RESULT "Hi! My name is " + N$
+70 ENDFUN
 ```
 
 ## GET
@@ -530,6 +566,39 @@ PRINT First_Name$ !! Last_Name$
 
    Bowman
 ```
+
+## PROCEDURE / RETURN / RECEIVE / LEAVE / ENDPROC
+
+Define a procedure.
+
+### Syntax
+
+PROCEDURE _v1_ [_v2_ [ ,_v3_...]] [RECEIVE [_v4_ [ , _v5_ ...]]]
+
+LEAVE
+
+ENDPROC
+
+### Remarks
+
+When is a function not a function?  When it's a procedure.  When is a procedure not a procedure? When it's a procedure that can receive arguments and return a value; in fact it can return several values, making it a kind of monster function!  Confusing?  Yep.  Ahead of it's time and brilliant?  Absolutely.
+
+
+
+As with functions, the definition can be placed anywhere in your program, so even if you call a procedure before it's defined, the procedure will still be callable.  The PROCEDURE command itself cannot be executed.  To avoid this is to put all your procedure statements at the end of the program, and insert an END statement above as shown in the example below.  The result is returned to the caller whenever LEAVE or ENDPROC is called from within the procedure.  The ENDPROC statement marks the end of the function.  Like ENDFUNC, although not strictly enforced in RM Basic, execution can be unpredictable if the ENDPROC statement is left out.
+
+### Example
+
+```
+10 REM Simple function to generate a greeting
+20 Name$ := "Slim Shady"
+30 PRINT Generate_Greeting$(Name$)
+40 END : REM Don't execute function definitions below
+50 FUNCTION Generate_Greeting(N$)
+60   RESULT "Hi! My name is " + N$
+70 ENDFUN
+```
+
 
 ## REM
 
@@ -833,3 +902,125 @@ Bitwise XOR on two expressions.
 ### Syntax
 
 _e1_ XOR _e2_
+
+# ANIMATE Extension
+
+This extension was introduced in RM Basic 2.00C released in 1987.  It was used to store and retrieve blocks of video memory and to load and save images in PaintSPA's file format.  ANIMATE has been re-implemented in RM BASICx64, supporting instead full-colour JPG and BMP files which, upon loading, are downsampled to which ever colour pallete is being used at the time.  Yes - this means that your 16 million colour JPG will be rendered with only 4 colours if you load it in MODE 80!  You can also save images in JPG or BMP format, making it possible to share screenshots and even generate memes with RM Basic (see `meme.BAS` in the example programs).  Keep in mind that the resolution of the Nimbus is tiny (320x250 in MODE 40) so it is recommended to scale down images to a comparable size beforehand.  Results are often further improved by boosting the contrast and brightness as well.
+
+The syntax and original documentation of the ANIMATE extensions's command aren't _quite_ consistent with the core RM Basic commands.  For authenticity these inconsistencies have been left in instead of being "fixed".
+
+## Keywords
+
+### READBLOCK
+
+Read the data displayed in a specified area of the screen into a numbered block of memory numbered 0 - 99.
+
+#### Syntax
+
+READBLOCK _block-number_, _x-min_, _y-min_; _x-max_, _y-max_
+
+#### Example
+
+```
+10 SET MODE 80
+20 REM Read the whole display into memory block 0
+30 READBLOCK 0, 0, 0; 639, 249
+```
+
+### WRITEBLOCK 
+
+Display the contents of a numbered block of memory at a specified position on the screen.
+
+#### Syntax
+
+WRITEBLOCK _block-number_, _x-pos_, _y-pos_ [, _plot-mode_]
+
+#### Example
+
+```
+10 REM Display the contents of block 0
+20 WRITEBLOCK 0, 0, 0, -1, 1
+```
+
+#### Remarks
+
+The specified memory block must have been previously allocated by READBLOCK or FETCH.
+
+Set _plot-mode_ to 0 for XOR plotting, or -1 for OVERWRITE plotting (-1 is default).
+
+Selecting a transparency colour has not yet been implemented.
+
+### SQUASH
+
+Same syntax and similar behaviour to WRITEBLOCK expect the image is scaled to 1/16 size before writing.
+
+### ASK BLOCKSIZE
+
+Returns the width and height (in pixels) of the specified memory block and the screen width (in characters) that was in use when the block was created.
+
+#### Syntax
+
+ASK BLOCKSIZE _block-size_, x-pixels_ [ , _y-pixels_ [ ,_screen-chars_ ]]
+
+#### Example
+
+```
+10 SET MODE 80
+20 READBLOCK 0, 0, 0; 639, 249
+30 ASK BLOCKSIZE 0, X%, Y%, M%
+40 PRINT X%, Y%, M%
+60 REM Prints 640    250    80
+```
+
+### COPYBLOCK 
+
+Copy the data displayed in one area of the screen into another area.
+
+#### Syntax
+
+COPYBLOCK _x-min_, _y-min_; _x-max_, _y-max_; _x-dest_, _y-dest_ [ , _plot-mode_ ]
+
+### DELBLOCK 
+
+Delete a numbered block of memory.
+
+#### Syntax
+
+DELBLOCK _block-number_
+
+### CLEARBLOCK 
+
+Delete all blocks of memory.
+
+#### Syntax
+
+CLEARBLOCK
+
+### FETCH
+
+Loads the contents of the specified image file into the specified memory block.  The image will be downsamples to the colour pallette in use at the time.  Supported formats are JPG and BMP.  The format is inferred from the file extension, which must be either `.jpg` or `.bmp`.
+
+#### Syntax
+
+FETCH _block-number_, _filename_
+
+#### Example
+
+```
+10 SET MODE 40
+20 REM Load the picture of an astronaut
+30 FETCH 0, "astronaut.jpg"
+```
+
+### KEEP
+
+Save the image held in the specified memory block to an image file.  The image format is inferred from the file extension, which must be either `.jpg` or `.bmp`.
+
+#### Syntax
+
+KEEP _block-number_, _filename_
+
+#### Example
+
+10 REM Save the image in block 99 as a bitmap
+20 KEEP 99, "mypic.bmp"

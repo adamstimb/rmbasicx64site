@@ -8,6 +8,41 @@ nav_order: 4
 
 ---
 
+## 0.20
+
+19th November 2021
+
+### New stuff
+
+- ANIMATE Extension for loading, displaying and saving image files:
+    - READBLOCK implemented
+    - WRITEBLOCK implemented
+    - SQUASH implemented
+    - ASK BLOCKSIZE implemented
+    - COPYBLOCK implemented
+    - DELBLOCK implemented
+    - CLEARBLOCK implemented
+    - FETCH implemented
+    - KEEP implemented
+- Functions implemented
+- Procedures implemented
+- Subroutines implemented
+- POINTS implemented
+- FLOOD implemented
+- FILL/FLOOD STYLE implemented
+- SET PATTERN implemented
+- END implemented
+- DATA implemented
+- RESTORE implemented
+- Arrays implemented (although they can't yet be referenced in procedure or function calls)
+- CTRL-B also sends sends BREAK interrupt signal (for keyboards without a Scroll-Lock key)
+- Location of workspace folder can now be set by RM_BASICX64_WORKSPACE_DIR env var
+- Windows installer asks user for location of workspace folder and sets RM_BASICX64_WORKSPACE_DIR accordingly
+
+### Bugfixes
+
+- Fixed borked drawing near top of screen
+
 ## 0.10A
 
 12th September 2021
