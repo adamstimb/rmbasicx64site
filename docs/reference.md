@@ -145,7 +145,7 @@ CIRCLE _e_, _coordinateList_ [_optionList_]
 
 ### Remarks
 
-_e_ is the radius of the circle.  The coordinate list can be a single set of coordinates or a list of several, seperated by a semicolon, e.g. 10, 200 or 10, 200; 20, 200; 30, 200
+_e_ is the radius of the circle.  The coordinate list can be a single set of coordinates or a list of several, separated by a semicolon, e.g. 10, 200 or 10, 200; 20, 200; 30, 200
 
 After the coordinate list you can specify options that override the current graphics settings:
 
