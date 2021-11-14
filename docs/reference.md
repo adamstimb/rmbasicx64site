@@ -77,7 +77,7 @@ After the coordinate list you can specify options that override the current grap
 | Option | Action | Syntax |
 | ------ | ------ | ------ |
 | BRUSH | selects the brush colour | BRUSH _e_ |
-| STYLE | not yet implemented | n/a |
+| STYLE | the fill style | STYLE _e1_[, _e2_[, _e3_]] |
 | OVER | selects the drawing style | OVER _t_ |
 
 ### Example
@@ -145,14 +145,14 @@ CIRCLE _e_, _coordinateList_ [_optionList_]
 
 ### Remarks
 
-_e_ is the radius of the circle.  The coordinate list can be a single set of coordinates or a list of several, seperated by a semicolon, e.g. 10, 200 or 10, 200; 20, 200; 30, 200
+_e_ is the radius of the circle.  The coordinate list can be a single set of coordinates or a list of several, separated by a semicolon, e.g. 10, 200 or 10, 200; 20, 200; 30, 200
 
 After the coordinate list you can specify options that override the current graphics settings:
 
 | Option | Action | Syntax |
 | ------ | ------ | ------ |
 | BRUSH | selects the brush colour | BRUSH _e_ |
-| STYLE | not yet implemented | n/a |
+| STYLE | the fill style | STYLE _e1_[, _e2_[, _e3_]] |
 | OVER | selects the drawing style | OVER _t_ |
 
 ### Example
@@ -187,6 +187,20 @@ PRINT COS(90)
 
 ```
 
+## DATA
+
+Specify numeric and/or string constants that will be assigned to variables with the READ statement.
+
+### Syntax
+
+DATA _c1_[, _c2_...]
+
+### Remarks
+
+DATA statements can be placed anywhere in your program and unlike function or procedure statements they can be executed although no side-effects will be noticed.  A program can have many DATA statements and the data in them will be read in the order in which they appear.  All DATA statements are read into memory _before_ the program itself executes, and the values are read into variables using READ statements.
+
+See the RM Basic manual for the details!
+
 ## DIR
 
 Lists the BASIC program files in the workspace folder.
@@ -207,6 +221,14 @@ Edit a line number in a program
 
 EDIT _lineNumber_
 
+## END
+
+End program execution
+
+### Syntax
+
+END
+
 ## EXP
 
 Calculate the exponential function, e^x
@@ -223,6 +245,27 @@ PRINT EXP(1)
    2.718281828459045
 
 ```
+
+## FLOOD
+
+Fill an area of the graphics screen.
+
+## Syntax
+
+FLOOD _coordinateList_ [_optionList_]
+
+### Remarks
+
+Starting from the point of points given in the coordinate list, the screen is filled with the brush colour until a boundary or drawing area edge is reached.
+
+After the coordinate list you can specify options that override the current graphics settings:
+
+| Option | Action | Syntax |
+| ------ | ------ | ------ |
+| BRUSH | selects the brush colour | BRUSH _e_ |
+| STYLE | the fill style | STYLE _e1_[, _e2_[, _e3_]] |
+| OVER | selects the drawing style | OVER _t_ |
+| EDGE | selects the boundary colour | OVER _t_ |
 
 ## FOR ... NEXT
 
@@ -254,6 +297,34 @@ RUN
   1
   0
   Blast off!
+```
+
+## FUNCTION / RESULT / ENDFUN
+
+Define a function.
+
+### Syntax
+
+FUNCTION _v1_([_v2_ [ ,_v3_...]])
+
+RESULT _e1_ [, _e2_ ...]
+
+ENDFUN
+
+### Remarks
+
+Functions can be defined in RM Basic much like in any modern language.  The definition can be placed anywhere in your program, so even if you call a function before it's defined, the function will still be callable.  The only gotcha is that the FUNCTION command itself cannot be executed.  A good way to avoid this is to put all your function statements at the end of the program, and insert an END statement above as shown in the example below.  The result is returned to the caller whenever RESULT is called from within the function.  Note that RM Basic functions can only return one value.  To return more than one value, bizarrely enough you don't need a function at all: You need a procedure!  The ENDFUN statement marks the end of the function.  Although not strictly enforced in RM Basic, execution can be unpredictable if the ENDFUN statement is left out.
+
+### Example
+
+```
+10 REM Simple function to generate a greeting
+20 Name$ := "Slim Shady"
+30 PRINT Generate_Greeting$(Name$)
+40 END : REM Don't execute function definitions below
+50 FUNCTION Generate_Greeting(N$)
+60   RESULT "Hi! My name is " + N$
+70 ENDFUN
 ```
 
 ## GET
@@ -491,6 +562,26 @@ After the coordinate list you can specify options that override the current grap
 | SIZE | selects the size of characters | SIZE _e1_[, _e2_] |
 | FONT | selects the font of characters | FONT _e_ |
 
+## POINTS
+
+Draw one or more points on the screen.
+
+## Syntax
+
+POINTS _coordinateList_ [_optionList_]
+
+### Remarks
+
+The coordinate list can be a single set of coordinates or a list of several, seperated by a semicolon, e.g. 10, 200 or 10, 200; 20, 200; 30, 200
+
+After the coordinate list you can specify options that override the current graphics settings:
+
+| Option | Action | Syntax |
+| ------ | ------ | ------ |
+| BRUSH | selects the brush colour | BRUSH _e_ |
+| STYLE | the points style | STYLE _e_ |
+| OVER | selects the drawing style | OVER _t_ |
+
 ## PRINT
 
 Prints strings and/or numbers on the screen.
@@ -530,6 +621,66 @@ PRINT First_Name$ !! Last_Name$
 
    Bowman
 ```
+
+## PROCEDURE / RETURN / RECEIVE / LEAVE / ENDPROC
+
+Define a procedure.
+
+### Syntax
+
+PROCEDURE _v1_ [_v2_ [ ,_v3_...]] [RECEIVE [_v4_ [ , _v5_ ...]]]
+
+LEAVE
+
+ENDPROC
+
+### Remarks
+
+When is a function not a function?  When it's a procedure.  When is a procedure not a procedure? When it's a procedure that can receive arguments and return a value; in fact it can return several values, making it a kind of monster function!  Confusing?  Yep.  Ahead of it's time and brilliant?  Absolutely.
+
+As with functions, the definition can be placed anywhere in your program, so even if you call a procedure before it's defined, the procedure will still be callable.  The PROCEDURE command itself cannot be executed.  To avoid this is to put all your procedure statements at the end of the program, and insert an END statement above as shown in the example below.  The result is returned to the caller whenever LEAVE or ENDPROC is called from within the procedure.  The ENDPROC statement marks the end of the function.  Like ENDFUNC, although not strictly enforced in RM Basic, execution can be unpredictable if the ENDPROC statement is left out.
+
+### Examples
+
+```
+10 Boom
+20 END
+30 PROCEDURE Boom
+40   SET MODE 40 : SET BORDER 14 : SET PAPER 2 : CLS
+50   Shadow_Text "BOOOMM!!!", 10, 10, 4, 15
+60 ENDPROC
+70 PROCEDURE Shadow_Text Msg$, X%, Y%, S%, C%
+80   PLOT Msg$, X%, Y% SIZE S% BRUSH 0
+90   PLOT Msg$, X% + 1, Y% + 1 SIZE S% BRUSH C%
+100 ENDPROC
+```
+
+```
+10 Cat_Name$ := "Fluffy"
+20 Dog_Name$ := "Czeszek"
+30 Cat_Food$ := "Salmon"
+40 Dog_Food$ := "Steak"
+50 Describe_Pets Cat_Name$, Dog_Name$, Cat_Food$, Dog_Food$ RECEIVE Names$, Foods$
+60 PRINT Names$
+70 PRINT Foods$
+80 END
+90 PROCEDURE Describe_Pets Pet_1_Name$, Pet_2_Name$, Pet_1_Food$, Pet_2_Food$ RETURN Their_Names$, Their_Foods$
+100   Their_Names$ = "The names of our pets are " + Pet_1_Name$ + " and " + Pet_2_Name$
+110   Their_Food$ = Pet_1_Name$ + "'s favourite food is " + Pet_1_Food$ + " but " + Pet_2_Name$ + " likes " + Pet_2_Food$
+120 ENDPROC
+```
+
+## READ
+
+Read values from DATA and assign them to variables.
+
+### Syntax
+
+READ _v1_[, _v2_...]
+
+### Remarks
+
+See the RM Basic manual for details.
 
 ## REM
 
@@ -589,6 +740,18 @@ UNTIL _t_
 70 UNTIL D1% = 6 AND D2% = 6
 80 PRINT "We got 2 sixes after ", Throws%, " throws!"
 ```
+
+## RESTORE
+
+Prepare to reread DATA instructions.
+
+### Syntax
+
+RESTORE [_lineNumber_]
+
+### Remarks
+
+See the RM Basic manual for details.
 
 ## RND
 
@@ -750,6 +913,18 @@ SET PAPER _e_
 SET PAPER 1
 ```
 
+## SET PATTERN
+
+Define a pattern that can be used as a BRUSH colour when drawing.
+
+### Syntax
+
+SET PATTERN _e1_, _e2_ TO _e3_, _e4_, _e5_, _e6_
+
+### Remarks
+
+See the RM Basic manual for how this works and the default pattern settings!
+
 ## SET PEN
 
 Change the pen colour.
@@ -813,6 +988,14 @@ PRINT SQR(23)
 
 ```
 
+## SUBROUTINE
+
+Label a section of code as a subroutine.
+
+### Syntax
+
+
+
 ## TAN
 
 Calculate the tangent of an angle. The unit of the measurement for the angle can be set with [SET DEG](#set-deg) or [SET RAD](#set-rad).
@@ -833,3 +1016,125 @@ Bitwise XOR on two expressions.
 ### Syntax
 
 _e1_ XOR _e2_
+
+# ANIMATE Extension
+
+This extension was introduced in RM Basic 2.00C released in 1987.  It was used to store and retrieve blocks of video memory and to load and save images in PaintSPA's file format.  ANIMATE has been re-implemented in RM BASICx64, supporting instead full-colour JPG and BMP files which, upon loading, are downsampled to which ever colour pallete is being used at the time.  Yes - this means that your 16 million colour JPG will be rendered with only 4 colours if you load it in MODE 80!  You can also save images in JPG or BMP format, making it possible to share screenshots and even generate memes with RM Basic (see `meme.BAS` in the example programs).  Keep in mind that the resolution of the Nimbus is tiny by today's standards (320x250 in MODE 40) so it is recommended to scale down images to a comparable size beforehand.  Results are often further improved by boosting the contrast and brightness as well.
+
+The syntax and original documentation of the ANIMATE extensions's command aren't _quite_ consistent with the core RM Basic commands.  For authenticity these inconsistencies have been left in instead of being "fixed".
+
+## Keywords
+
+### READBLOCK
+
+Read the data displayed in a specified area of the screen into a numbered block of memory numbered 0 - 99.
+
+#### Syntax
+
+READBLOCK _block-number_, _x-min_, _y-min_; _x-max_, _y-max_
+
+#### Example
+
+```
+10 SET MODE 80
+20 REM Read the whole display into memory block 0
+30 READBLOCK 0, 0, 0; 639, 249
+```
+
+### WRITEBLOCK 
+
+Display the contents of a numbered block of memory at a specified position on the screen.
+
+#### Syntax
+
+WRITEBLOCK _block-number_, _x-pos_, _y-pos_ [, _plot-mode_]
+
+#### Example
+
+```
+10 REM Display the contents of block 0
+20 WRITEBLOCK 0, 0, 0, -1, 1
+```
+
+#### Remarks
+
+The specified memory block must have been previously allocated by READBLOCK or FETCH.
+
+Set _plot-mode_ to 0 for XOR plotting, or -1 for OVERWRITE plotting (-1 is default).
+
+Selecting a transparency colour has not yet been implemented.
+
+### SQUASH
+
+Same syntax and similar behaviour to WRITEBLOCK expect the image is scaled to 1/16 size before writing.
+
+### ASK BLOCKSIZE
+
+Returns the width and height (in pixels) of the specified memory block and the screen width (in characters) that was in use when the block was created.
+
+#### Syntax
+
+ASK BLOCKSIZE _block-size_, x-pixels_ [ , _y-pixels_ [ ,_screen-chars_ ]]
+
+#### Example
+
+```
+10 SET MODE 80
+20 READBLOCK 0, 0, 0; 639, 249
+30 ASK BLOCKSIZE 0, X%, Y%, M%
+40 PRINT X%, Y%, M%
+60 REM Prints 640    250    80
+```
+
+### COPYBLOCK 
+
+Copy the data displayed in one area of the screen into another area.
+
+#### Syntax
+
+COPYBLOCK _x-min_, _y-min_; _x-max_, _y-max_; _x-dest_, _y-dest_ [ , _plot-mode_ ]
+
+### DELBLOCK 
+
+Delete a numbered block of memory.
+
+#### Syntax
+
+DELBLOCK _block-number_
+
+### CLEARBLOCK 
+
+Delete all blocks of memory.
+
+#### Syntax
+
+CLEARBLOCK
+
+### FETCH
+
+Loads the contents of the specified image file into the specified memory block.  The image will be downsamples to the colour pallette in use at the time.  Supported formats are JPG and BMP.  The format is inferred from the file extension, which must be either `.jpg` or `.bmp`.
+
+#### Syntax
+
+FETCH _block-number_, _filename_
+
+#### Example
+
+```
+10 SET MODE 40
+20 REM Load the picture of an astronaut
+30 FETCH 0, "astronaut.jpg"
+```
+
+### KEEP
+
+Save the image held in the specified memory block to an image file.  The image format is inferred from the file extension, which must be either `.jpg` or `.bmp`.
+
+#### Syntax
+
+KEEP _block-number_, _filename_
+
+#### Example
+
+10 REM Save the image in block 99 as a bitmap
+20 KEEP 99, "mypic.bmp"

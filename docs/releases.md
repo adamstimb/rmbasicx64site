@@ -8,6 +8,43 @@ nav_order: 4
 
 ---
 
+## 0.20
+
+14th November 2021
+
+### New stuff
+
+- ANIMATE Extension for loading, displaying and saving image files:
+    - READBLOCK implemented
+    - WRITEBLOCK implemented
+    - SQUASH implemented
+    - ASK BLOCKSIZE implemented
+    - COPYBLOCK implemented
+    - DELBLOCK implemented
+    - CLEARBLOCK implemented
+    - FETCH implemented
+    - KEEP implemented
+- Functions implemented
+- Procedures implemented
+- Subroutines implemented
+- POINTS implemented
+- FLOOD implemented
+- FILL/FLOOD STYLE implemented
+- SET PATTERN implemented
+- END implemented
+- DATA implemented
+- RESTORE implemented
+- Arrays implemented (although they can't yet be referenced in procedure or function calls)
+- CTRL-B also sends sends BREAK interrupt signal (for keyboards without a Scroll-Lock key)
+- Location of workspace folder can now be set by RM_BASICX64_WORKSPACE_DIR env var
+- Windows installer asks user for location of workspace folder and sets RM_BASICX64_WORKSPACE_DIR accordingly
+
+### Bugfixes
+
+- Fixed borked drawing near top of screen
+
+See the [Reference](https://adamstimb.github.io/rmbasicx64site/docs/reference.html) for an up-to-date list of implemented commands.
+
 ## 0.10A
 
 12th September 2021
@@ -45,6 +82,8 @@ nav_order: 4
 - Fixed major slowdown after many graphics operations
 - CPU usage is a little more restrained but still runs quite hot
 - "Unknown/command procedure" error is now produced if a statement contains only a solitary variable name
+
+See the [Reference](https://adamstimb.github.io/rmbasicx64site/docs/reference.html) for an up-to-date list of implemented commands.
 
 ## 0.01B
 
