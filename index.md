@@ -46,6 +46,9 @@ Using big fonts to say hello
 ![Mandelbrot Set](assets/images/mandelbrot-set.png)
 The Mandelbrot Set
 
+![Meme Generator](assets/images/meme-screenshot.png)
+Making daft memes with RM Basic
+
 ## Authorship
 
 RM BASICx64 was written in [Go](https://golang.org/) by Tim Adams, leaning heavily on the [ebiten](https://ebiten.org/) game engine, and borrowing with merry abandon from [Writing An Interpreter in Go](https://interpreterbook.com/) by Thorsten Ball.  The language has been re-implemented according to available documentation but does not re-use any of the original code of RM Basic.
