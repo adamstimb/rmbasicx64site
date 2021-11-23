@@ -10,6 +10,20 @@ nav_order: 5
 
 This reference defines all the commands currently implemented in RM BASICx64 with details of any deviations from the original RM Basic implementation.  To learn RM Basic itself I recommend reading the original RM Basic manual, available for free and legal download from the [Centre for Computing History](http://www.computinghistory.org.uk/det/47278/RM-Nimbus-PC-RM-Basic-PN-14351/).
 
+# General
+
+## Filepaths
+
+The original RM Nimbus shipped with MS-DOS 3.1 as standard and the differences between that are modern operating systems creates a many-bodied problem when trying to emulate the file operation behaviour of RM Basic, which implemented MS-DOS-like commands such as `DIR`, `CHDIR`, etc. but also did some pre-handling before running the command on MS-DOS.  This could easily turn into a giagantic hairball in a cross-platform app so the following constraints were put in place:
+
+- The filepath divider character is "\\", consistent with MS-DOS/Windows.
+- The Workspace Directory set during the installation process is regarded as root ("\\").
+- It is not possible to access folders above the root.
+- Only very basic behaviour is implemented, e.g. switching between subdirectories, deleting or renaming files individually, creating subdirectories etc.
+- Relative paths (e.g. "..\\mydir") are not supported.
+- Files cannot be deleted or renamed recursively or with wildcards; these operations are supported only for individual files.
+- Unlike RM Basic (and MS-DOS 3.1) filepaths are case-sensitive.
+
 # Keywords
 
 The format, punctuation and options are shown using the following symbols:
@@ -135,6 +149,18 @@ PRINT ATN(1.557)
 
 Quit the application.
 
+## CHDIR
+
+Change the current working directory.
+
+### Syntax
+
+CHDIR _e$_
+
+### Remarks
+
+See General - Filepaths for restrictions.
+
 ## CIRCLE
 
 Draw one or more circles on the screen.
@@ -203,15 +229,17 @@ See the RM Basic manual for the details!
 
 ## DIR
 
-Lists the BASIC program files in the workspace folder.
+Print a directory listing
 
 ### Syntax
 
-DIR
+DIR [_e$_]
 
 ### Remarks
 
-DIR does not yet support listing different folders or files without the .BAS extension.  The workspace folder is currently a subdirectory in your installation folder and cannot be changed.  In a future release it should become possible to change this to something more suitable, e.g. a folder in My Documents.
+`DIR` without an argument lists all .BAS files in the current working directory.  Old-school MS-DOS wildcards are supported, so to list all JPGs use `DIR "*.JPG"` and all files `DIR "*.*"`.  To list folders in a subdirectory use `DIR "myfolder\"`.  Just like RM Basic, if the file extension is omitted as in the last example, *.BAS is automatically appended.  Unlike RM Basic (and MS-DOS 3.1) the filepaths are case-sensitive.
+
+See General - Filepaths for restrictions.
 
 ## EDIT
 
@@ -228,6 +256,18 @@ End program execution
 ### Syntax
 
 END
+
+## ERASE
+
+Erase a file in the current working directory.
+
+### Syntax
+
+ERASE _e$_
+
+### Remarks
+
+See General - Filepaths for restrictions.
 
 ## EXP
 
@@ -315,6 +355,8 @@ ENDFUN
 
 Functions can be defined in RM Basic much like in any modern language.  The definition can be placed anywhere in your program, so even if you call a function before it's defined, the function will still be callable.  The only gotcha is that the FUNCTION command itself cannot be executed.  A good way to avoid this is to put all your function statements at the end of the program, and insert an END statement above as shown in the example below.  The result is returned to the caller whenever RESULT is called from within the function.  Note that RM Basic functions can only return one value.  To return more than one value, bizarrely enough you don't need a function at all: You need a procedure!  The ENDFUN statement marks the end of the function.  Although not strictly enforced in RM Basic, execution can be unpredictable if the ENDFUN statement is left out.
 
+Global variables and passing arrays by reference are not yet supported.
+
 ### Example
 
 ```
@@ -334,6 +376,16 @@ Read the code of a character from the keyboard if a key was pressed.
 ### Syntax
 
 GET([_e_])
+
+## GOSUB
+
+### Syntax
+
+GOSUB _label_
+
+### Remarks
+
+Jump to a SUBROUTINE.  Execution will be returned to the place where you jumped when the subroutine ends with a RETURN statement.
 
 ## GOTO
 
@@ -504,6 +556,38 @@ PRINT LOG(5.2)
 
 ```
 
+## LOOKUP
+
+Check if a file exists in the current working directory and return TRUE or FALSE.
+
+### Syntax
+
+LOOKUP(_e$_)
+
+### Remarks
+
+See General - Filepaths for restrictions.
+
+## MKDIR
+
+Create a subdirectory in the current working directory.
+
+### Syntax
+
+MKDIR _e$_
+
+### Remarks
+
+See General - Filepaths for restrictions.
+
+## MOD
+
+Returns the remainder of integer division.
+
+### Syntax
+
+_e1_ MOD _e2_
+
 ## MOVE
 
 Move the cursor relative to its current position.
@@ -539,6 +623,18 @@ Bitwise OR on two expressions.
 ### Syntax
 
 _e1_ OR _e2_
+
+## PATH$
+
+Returns the current working directory.
+
+### Syntax
+
+PATH$
+
+### Remarks
+
+See General - Filepaths for restrictions.
 
 ## PLOT
 
@@ -640,6 +736,8 @@ When is a function not a function?  When it's a procedure.  When is a procedure 
 
 As with functions, the definition can be placed anywhere in your program, so even if you call a procedure before it's defined, the procedure will still be callable.  The PROCEDURE command itself cannot be executed.  To avoid this is to put all your procedure statements at the end of the program, and insert an END statement above as shown in the example below.  The result is returned to the caller whenever LEAVE or ENDPROC is called from within the procedure.  The ENDPROC statement marks the end of the function.  Like ENDFUNC, although not strictly enforced in RM Basic, execution can be unpredictable if the ENDPROC statement is left out.
 
+Global variables and passing arrays by reference are not yet supported.
+
 ### Examples
 
 ```
@@ -689,6 +787,18 @@ Insert a comment.
 ## Syntax
 
 REM _comment_
+
+## RENAME
+
+Rename a file in the current working directory.
+
+### Syntax
+
+RENAME _e1$_ TO _e2$_
+
+### Remarks
+
+See General - Filepaths for restrictions.
 
 ## RENUMBER
 
@@ -752,6 +862,18 @@ RESTORE [_lineNumber_]
 ### Remarks
 
 See the RM Basic manual for details.
+
+## RMDIR
+
+Remove a subdirectory in the current working directory.
+
+### Syntax
+
+RMDIR _e$_
+
+### Remarks
+
+See General - Filepaths for restrictions.
 
 ## RND
 
@@ -988,13 +1110,29 @@ PRINT SQR(23)
 
 ```
 
+## STR$
+
+Convert a number into a string representation.
+
+### Syntax
+
+STR$(_e_)
+
 ## SUBROUTINE
 
 Label a section of code as a subroutine.
 
 ### Syntax
 
+SUBROUTINE _label_
 
+...
+
+RETURN
+
+### Remarks
+
+See RM Basic manual for details.
 
 ## TAN
 
@@ -1136,5 +1274,7 @@ KEEP _block-number_, _filename_
 
 #### Example
 
+```
 10 REM Save the image in block 99 as a bitmap
 20 KEEP 99, "mypic.bmp"
+```

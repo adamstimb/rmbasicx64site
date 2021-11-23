@@ -8,6 +8,29 @@ nav_order: 4
 
 ---
 
+## 0.21
+
+23rd November 2021
+
+### New stuff
+
+- DIR now receives a path argument, e.g. DIR "*.JPG" or DIR "myprogs\"
+- CHDIR implemented
+- MKDIR implemeneted
+- RMDIR implemented
+- ERASE implemented
+- RENAME implemented
+- LOOKUP implemented
+- STR$() implemented
+- MOD implemented
+
+### Bug fixes
+
+- Fixed broken array indexing for 2 dimensions
+- Fixed broken IF statement parsing when condition expression contains an array
+- Fixed broken parsing of statements between THEN and ELSE
+- Fixed incorrect "End of instruction expected" error after DIM statement
+
 ## 0.20
 
 14th November 2021
