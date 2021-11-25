@@ -8,6 +8,16 @@ nav_order: 4
 
 ---
 
+## 0.22
+
+26th November 2021
+
+### Bug fixes
+
+- Corrected READBLOCK and COPYBLOCK syntax
+- Fixed minor font rendering glitches
+- Cosmetic changes to boot screen and editor screen to be more authentic(ish)
+
 ## 0.21
 
 23rd November 2021
